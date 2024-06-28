@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Notificaciones</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+</head>
+<body>
+  <header>
+    <h1>Notificaciones</h1>
+  </header>
+  <section id="notifications"></section>
+  <section id="notificationDetails" class="details">
+    <h2>Detalles de la Notificación</h2>
+    <p><strong>Tipo de Alerta:</strong> <span id="alertTipo"></span></p>
+    <p><strong>Mensaje:</strong> <span id="alertMensaje"></span></p>
+    <p><strong>Usuario:</strong> <span id="alertUsuario"></span></p>
+    <p><strong>Latitud:</strong> <span id="alertLatitud"></span></p>
+    <p><strong>Longitud:</strong> <span id="alertLongitud"></span></p>
+    <img id="alertFoto" src="" alt="Foto de la alerta" style="max-width: 100%;" />
+    <div id="map" style="height: 300px;"></div>
+  </section>
+  <script src="notificaciones.js"></script>
+</body>
+</html>
