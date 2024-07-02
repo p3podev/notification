@@ -1,0 +1,36 @@
+body {
+    font-family: Arial, sans-serif;
+  }
+  
+  header {
+    background: #333;
+    color: white;
+    padding: 1em;
+    text-align: center;
+  }
+  
+  #notifications {
+    padding: 1em;
+  }
+  
+  .notification {
+    border: 1px solid #ccc;
+    padding: 1em;
+    margin: 1em 0;
+    cursor: pointer;
+  }
+  
+  .details {
+    padding: 1em;
+    background: #f9f9f9;
+    display: none;
+  }
+  
+  .details.active {
+    display: block;
+  }
+  
+  #map {
+    margin-top: 1em;
+  }
+  
