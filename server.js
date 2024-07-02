@@ -15,7 +15,7 @@ app.use(
       useDefaults: true,
       directives: {
         "default-src": ["'self'"],
-        "script-src": ["'self'", "https://cdn.socket.io"],
+        "script-src": ["'self'", "https://cdn.socket.io", "https://unpkg.com"],
         "connect-src": ["'self'", apiUrl, apiUrl.replace('https', 'wss')],
         "img-src": ["'self'", "data:", "https:"],
       },
@@ -28,6 +28,7 @@ app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", allowedOrigin);
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  res.setHeader("Access-Control-Allow-Credentials", "true"); // Si es necesario
   next();
 });
 
