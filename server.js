@@ -16,7 +16,13 @@ app.use(
       directives: {
         "default-src": ["'self'"],
         "script-src": ["'self'", "https://cdn.socket.io", "https://unpkg.com"],
-        "connect-src": ["'self'", apiUrl, apiUrl.replace('https', 'wss')],
+        "connect-src": [
+          "'self'",
+          apiUrl,
+          apiUrl.replace('https', 'wss'),
+          "ws://localhost:3004",
+          "wss://localhost:3004"
+        ],
         "img-src": ["'self'", "data:", "https:"],
       },
     },
