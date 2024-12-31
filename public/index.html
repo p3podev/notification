@@ -1,29 +1,91 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Notificaciones</title>
-  <link rel="stylesheet" href="styles.css">
-  <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
-  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-</head>
-<body>
-  <header>
-    <h1>Notificaciones</h1>
-  </header>
-  <section id="notifications"></section>
-  <section id="notificationDetails" class="details">
-    <h2>Detalles de la Notificación</h2>
-    <p><strong>Tipo de Alerta:</strong> <span id="alertTipo"></span></p>
-    <p><strong>Mensaje:</strong> <span id="alertMensaje"></span></p>
-    <p><strong>Usuario:</strong> <span id="alertUsuario"></span></p>
-    <p><strong>Latitud:</strong> <span id="alertLatitud"></span></p>
-    <p><strong>Longitud:</strong> <span id="alertLongitud"></span></p>
-    <img id="alertFoto" src="" alt="Foto de la alerta" style="max-width: 100%;" />
-    <div id="map" style="height: 300px;"></div>
-  </section>
-  <script src="script.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Incluir la librería CSS de Leaflet -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    />
+
+    <!-- Incluir la librería JS de Leaflet -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  </head>
+  <body>
+    <!-- NavBar -->
+    <nav>
+      <div><span>Usuario: Aleatorio</span></div>
+      <div><button>Historial</button></div>
+    </nav>
+    <!-- Título principal -->
+    <header>
+      <h1>DIRECCIÓN DE GESTIÓN DE RIESGOS</h1>
+    </header>
+    <section class="notificaciones">
+      <section class="panico">
+        <h3>Notificaciones de Pánico</h3>
+
+        <!-- Más notificaciones de pánico aquí -->
+      </section>
+      <section class="general">
+        <h3>Notificaciones Varias</h3>
+        <!-- Notificaciones generales aquí -->
+      </section>
+    </section>
+    <section class="alerta">
+      <div class="navAlerta">
+        <h2 class="tipoAlerta">Tipo de Alerta: <span></span></h2>
+        <button id="close">Close</button>
+      </div>
+      <div class="informacion">
+        <div class="usuarioFecha">
+          <p>Usuario: <span></span></p>
+          <p>Fecha: <span></span></p>
+        </div>
+        <div class="ubicacionTelefono">
+          <p>Ubicación: <span></span></p>
+          <p>Teléfono: <span></span></p>
+        </div>
+        <div class="rolDependencia">
+          <p>Rol: <span></span></p>
+          <p>Dependencia: <span></span></p>
+        </div>
+      </div>
+      <div class="mensaje_foto_mapa">
+        <div class="acciones">
+          <div class="respuesta_container">
+            <button id="respuestaButton">Respuesta</button>
+          </div>
+          <div class="contestacion_container">
+            <label for="input-text"><h3>Respuesta:</h3></label>
+            <textarea id="respuestaTextArea" name="respuesta"></textarea>
+          </div>          
+          <div class="sirena_container">
+            <button id="sirena">Activar Sirena</button>
+          </div>
+          <div class="resuelto_container">
+            <button id="resuelto">Resuelto</button>
+          </div>
+        </div>
+        <div class="mapa_container">
+          <h3>Mapa</h3>
+          <div id="mapa"></div>
+        </div>
+        <div class="mensaje_foto">
+          <div class="mensaje_container">
+            <h3>Mensaje</h3>
+            <p class="mensaje"></p>
+          </div>
+          <div class="foto_container">
+            <h3>Foto</h3>
+            <img src="" alt="Foto no disponible" />
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="script.js"></script>
+  </body>
 </html>

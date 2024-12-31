@@ -1,36 +1,420 @@
+:root {
+  --primary: #ff3e3e;
+  --dark: #1a1a1a;
+  --light: #ffffff;
+  --gray: #f0f0f0;
+  --primary-dark: #0056b3;
+  --primary-hover: #004080;
+  --nav-bg: #007bff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
 body {
-    font-family: Arial, sans-serif;
-  }
+  background-color: var(--light);
+  min-height: 75vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+nav {
+  width: 100%;
+  background-color: var(--nav-bg);
+  color: var(--light);
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav div {
+  margin: 0 30px;
+}
+
+nav button {
+  background-color: var(--primary-dark);
+  border: none;
+  padding: 10px 15px;
+  color: var(--light);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+nav button:hover {
+  background-color: var(--primary-hover);
+}
+
+header {
+  width: 90%;
+  max-width: 1200px;
+  margin: 20px 0;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 1.8em;
+  color: #333;
+}
+
+section.notificaciones {
+  width: 100%;
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.usuarioTipo {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+}
+
+section.general,
+section.panico {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  height: 100%;
+}
+
+section.panico {
+  background-color: #ffebee;
+}
+
+section.panico h3,
+section.general h3, 
+section.alerta h3{
   
-  header {
-    background: #333;
-    color: white;
-    padding: 1em;
-    text-align: center;
+  grid-column: span 2;
+  text-align: center;
+  font-size: 17px;
+  color: #444;
+  font-weight: bold;
+}
+
+
+section.panico .notificacion,
+section.general .notificacion {
+  background-color: var(--light);
+  border: 1px solid #ddd;
+  border-left: 5px solid var(--primary);
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+section.panico .notificacion:hover,
+section.general .notificacion:hover {
+  transform: scale(1.02);
+  background-color: #f9f9f9;
+}
+
+/* Specific notification styles */
+section.general .notificacion.robo {
+  border-left: 5px solid #000000;
+}
+
+section.general .notificacion.incendio {
+  border-left: 5px solid #f44336;
+}
+
+section.general .notificacion.novedad {
+  border-left: 5px solid #8bc34a;
+}
+
+section.general .notificacion.falla {
+  border-left: 5px solid #ffc107;
+}
+
+section.general .notificacion.vehiculo {
+  border-left: 5px solid #607d8b;
+}
+
+section.general .notificacion.medica {
+  border-left: 5px solid #3f51b5;
+}
+
+section.general .notificacion.personal {
+  border-left: 5px solid #9c27b0;
+}
+
+section.panico .notificacion p,
+section.general .notificacion p {
+  margin: 5px 0;
+  font-size: 0.9em;
+  color: #333;
+}
+
+section.alerta {
+  width: 100%;
+  height: 100vh; /* Eliminar 100vh para que la altura se ajuste al contenido */
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  background-color: var(--light);
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 0 20px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+section.alerta .navAlerta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 5px;
+}
+
+section.alerta .navAlerta h2 {
+  font-size: 1.5em;
+  color: #333;
+}
+
+section.alerta .navAlerta button {
+  background-color: var(--primary-dark);
+  border: none;
+  padding: 8px 12px;
+  color: var(--light);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+section.alerta .navAlerta button:hover {
+  background-color: var(--primary-hover);
+}
+section.alerta .informacion {
+  padding: 5px 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+section.alerta .usuarioFecha,
+section.alerta .ubicacionTelefono,
+section.alerta .rolDependencia {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1em;
+  color: #444;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+section.alerta .usuarioFecha p,
+section.alerta .ubicacionTelefono p,
+section.alerta .rolDependencia p {
+  margin: 5px 0 5px 0;
+  font-weight: normal;
+}
+
+section.alerta .usuarioFecha span,
+section.alerta .ubicacionTelefono span,
+section.alerta .rolDependencia span {
+  font-weight: bold;
+}
+section.alerta .mensajeFoto {
+  display: flex;
+}
+section.alerta .mensaje_foto_mapa {
+  display: flex;
+  gap: 0;
+  justify-content: space-between;
+}
+section.alerta .mensaje_container {
+  height: 25vh;
+  width: 65vh;
+  overflow: auto; /* Esto permite desplazamiento tanto horizontal como vertical si el contenido excede el contenedor */
+  padding: 10px; /* Para que el texto no esté pegado a los bordes */
+}
+section.alerta .mensaje_container h3{
+text-align: center;
+}
+section.alerta .mensaje_container p {
+  font-size: fit-content; /* Esto ajustaría el tamaño del texto basado en el contenido */
+  margin: 0;
+  line-height: 1.3;
+  text-align: justify; /* Justifica el texto */
+  word-wrap: break-word;
+}
+section.alerta .foto_container {
+  height: 50vh;
+  width: 65vh;
+  overflow: hidden; /* Si la imagen es más grande que el contenedor, se recorta */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centra la imagen horizontalmente */
+  align-items: center; /* Centra la imagen verticalmente */
+  padding: 10px; /* Agrega un poco de espacio alrededor de la imagen */
+  box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total del contenedor */
+}
+
+section.alerta .foto_container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Ajuste de la imagen dentro del contenedor */
+  object-position: center; /* Centra la imagen */
+  border-radius: 20px; /* Bordes redondeados aplicados a la imagen */
+}
+section.alerta .mapa_container {
+  height: 75vh;
+  width: 85vh;
+  overflow: hidden;  /* Esto recorta cualquier contenido que se salga del contenedor */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;  /* Alinea los elementos al principio */
+  align-items: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+section.alerta .mapa_container h3 {
+  margin: 0; /* Elimina márgenes por defecto */
+  z-index: 10; /* Asegura que el h3 quede por encima del mapa si se solapan */
+}
+
+#mapa {
+  flex-grow: 1;  /* El mapa ocupa el espacio restante */
+  width: 100%;  /* Ocupa todo el ancho disponible */
+  border-radius: 20px;
+  overflow: hidden;
+  z-index: 1;  /* Hace que el mapa quede por debajo del h3 */
+}
+
+section.alerta .mensaje_container,
+section.alerta .foto_container,
+section.alerta .mapa_container {
+  padding: 15px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  min-width: 280px; /* Asegura que los contenedores no se vuelvan demasiado pequeños */
+}
+
+section.alerta .mapa_container img {
+  object-fit: cover;
+  border-radius: 8px;
+  width: 100%;
+  height: auto;
+}
+
+section.alerta .acciones {
+  height: 75vh;
+  width: 50vh;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 15px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  justify-content: center;
+}
+
+section.alerta .contestacion_container {
+  margin-bottom: 10px;
+  display: none;
+}
+
+section.alerta .contestacion_container label {
+  font-size: 14px;
+  color: var(--primary-dark);
+  margin-bottom: 5px;
+}
+
+section.alerta .contestacion_container textarea {
+  width: 100%;
+  height: 200px; /* Ajusta el alto según lo necesites */
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  transition: border 0.3s ease;
+  resize: vertical; /* Permite que el usuario cambie el tamaño verticalmente si lo desea */
+}
+
+section.alerta .contestacion_container input:focus {
+  border-color: var(--primary-dark);
+  outline: none;
+}
+.resuelto_container button {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #28a745; /* Verde */
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.resuelto_container button:hover {
+  background-color: #218838; /* Verde oscuro al pasar el mouse */
+}
+section.alerta .acciones .sirena_container button, section.alerta .acciones .respuesta_container button  {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--primary-dark);
+  color: var(--light);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+section.alerta .acciones .sirena_container button:hover,section.alerta .acciones .respuesta_container button:hover {
+  background-color: var(--primary-hover);
+}
+
+
+@media (max-width: 768px) {
+  section.alerta .mensaje_foto_mapa {
+    flex-direction: column; /* Asegura que los elementos se apilen verticalmente */
+    gap: 10px;
   }
-  
-  #notifications {
-    padding: 1em;
+
+  section.alerta .mensaje_container,
+  section.alerta .foto_container,
+  section.alerta .mapa_container {
+    width: 100%; /* Ocupan todo el ancho disponible */
   }
-  
-  .notification {
-    border: 1px solid #ccc;
-    padding: 1em;
-    margin: 1em 0;
-    cursor: pointer;
+
+  section.alerta .mapa_container {
+    height: 200px; /* Ajusta la altura del mapa para pantallas pequeñas */
   }
-  
-  .details {
-    padding: 1em;
-    background: #f9f9f9;
-    display: none;
+
+  section.alerta .acciones {
+    flex-direction: column;
   }
-  
-  .details.active {
-    display: block;
+
+  section.alerta .acciones button {
+    width: 100%; /* Asegura que los botones ocupen todo el ancho */
   }
-  
-  #map {
-    margin-top: 1em;
-  }
-  
+}
